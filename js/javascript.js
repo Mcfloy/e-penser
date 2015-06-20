@@ -3,14 +3,24 @@ xhr.open("GET", "https://www.googleapis.com/youtube/v3/search?order=date&part=id
 xhr.send();
 
 if (xhr.readyState == 4 && xhr.status == 200) {
-	var json = JSON.parse(xhr.responseText);
+	var uploads = JSON.parse(xhr.responseText);
 } else {
-	console.log("Error on receiving youtube informations !");
+	console.log("Error on receiving e-penser's uploads !");
 }
 
-if (json !== undefined) {
-	var lastVideo = json.items[0];
-	console.log(json);
+if (uploads !== undefined) {
+	var firstItem = uploads.items[0];
+	console.log(uploads);
+	var xhrVideo = new XMLHttpRequest();
+	xhrVideo.open("GET", "https://www.googleapis.com/youtube/v3/video?id=" + firstItem.id.videoId + "&part=snippet&key=AIzaSyBCt5jbexNc1YbPTx5odURRdOVoxCbgFcc", false);
+	xhrVideo.send();
+	if (xhrVideo.readyState == 4 && xhrVideo.status == 200) {
+		var videoInformation = JSON.parse(xhrVideo.responseText);
+		$('#title').html(videoInformation.snippet.title);
+		$('#description').html(videoInformation.snippet.description);
+	} else {
+		console.log("Error on receiving the lastest video informations !");
+	}
 }
 
 var tag = document.createElement('script');
@@ -23,7 +33,7 @@ function onYouTubeIframeAPIReady() {
 	player = new YT.Player('player', {
 		height: '641',
 		width: '1140',
-		videoId: lastVideo.id,
+		videoId: lastVideo.id.videoId,
 		events: {
 			'onReady': onPlayerReady,
 			'onStateChange': onPlayerStateChange
