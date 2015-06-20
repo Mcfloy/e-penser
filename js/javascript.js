@@ -10,6 +10,7 @@ if (xhr.readyState == 4 && xhr.status == 200) {
 
 if (json !== undefined) {
 	var lastVideo = json.items[0];
+	console.log(lastVideo);
 	$('#title').html(lastVideo.snippet.title);
 	$('#description').html(lastVideo.snippet.description);
 }
