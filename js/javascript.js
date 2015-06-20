@@ -1,8 +1,18 @@
 var xhr = new XMLHttpRequest();
-xhr.open("GET", "https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&channelId=UCcziTK2NKeWtWQ6kB5tmQ8Q&maxResults=50&key=AIzaSyBCt5jbexNc1YbPTx5odURRdOVoxCbgFcc", false);
+xhr.open("GET", "https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&channelId=UCcziTK2NKeWtWQ6kB5tmQ8Q&maxResults=5&key=AIzaSyBCt5jbexNc1YbPTx5odURRdOVoxCbgFcc", false);
 xhr.send();
-console.log(xhr.status);
-console.log(xhr.responseText);
+
+if (xhr.readyState == 4 && xhr.status == 200) {
+	var json = JSON.parse(xhr.responseText);
+} else {
+	console.log("Error on receiving youtube informations !");
+}
+
+if (json !== undefined) {
+	var lastVideo = json.items[0];
+	$('#title').html(lastVideo.snippet.title);
+	$('#description').html(lastVideo.snippet.description);
+}
 
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
@@ -14,7 +24,7 @@ function onYouTubeIframeAPIReady() {
 	player = new YT.Player('player', {
 		height: '641',
 		width: '1140',
-		videoId: 'BTaPtvxa_Uo',
+		videoId: lastVideo.id,
 		events: {
 			'onReady': onPlayerReady,
 			'onStateChange': onPlayerStateChange
@@ -23,16 +33,4 @@ function onYouTubeIframeAPIReady() {
 }
 
 function onPlayerReady(event) {
-	event.target.playVideo();
-}
-
-var done = false;
-function onPlayerStateChange(event) {
-	if (event.data == YT.PlayerState.PLAYING && !done) {
-		setTimeout(stopVideo, 6000);
-		done = true;
-	}
-}
-function stopVideo() {
-	player.stopVideo();
 }
