@@ -39,6 +39,9 @@ function onYouTubeIframeAPIReady() {
 			'onReady': onPlayerReady,
 			'onStateChange': onPlayerStateChange
 		}
+		controls: 2,
+		rel: 0,
+		showinfo: 0
 	});
 }
 
