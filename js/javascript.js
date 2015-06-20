@@ -15,7 +15,7 @@ if (uploads !== undefined) {
 	xhrVideo.open("GET", "https://www.googleapis.com/youtube/v3/videos?part=snippet&id=" + firstItem.id.videoId + "&key=AIzaSyBCt5jbexNc1YbPTx5odURRdOVoxCbgFcc", false);
 	xhrVideo.send();
 	if (xhrVideo.readyState == 4 && xhrVideo.status == 200) {
-		var videoInformation = JSON.parse(xhrVideo.responseText);
+		var videoInformation = JSON.parse(xhrVideo.responseXML);
 		console.log(videoInformation);
 		$('#title').html(videoInformation.items[0].snippet.title);
 		$('#description').html(videoInformation.items[0].snippet.description);
