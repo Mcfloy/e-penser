@@ -10,12 +10,13 @@ if (xhr.readyState == 4 && xhr.status == 200) {
 
 if (uploads !== undefined) {
 	var firstItem = uploads.items[0];
-	console.log(uploads);
+	console.log(firstItem);
 	var xhrVideo = new XMLHttpRequest();
-	xhrVideo.open("GET", "https://www.googleapis.com/youtube/v3/video?id=" + firstItem.id.videoId + "&part=snippet&key=AIzaSyBCt5jbexNc1YbPTx5odURRdOVoxCbgFcc", false);
+	xhrVideo.open("GET", "https://www.googleapis.com/youtube/v3/videos?part=snippet&id=" + firstItem.id.videoId + "&key=AIzaSyBCt5jbexNc1YbPTx5odURRdOVoxCbgFcc", false);
 	xhrVideo.send();
 	if (xhrVideo.readyState == 4 && xhrVideo.status == 200) {
 		var videoInformation = JSON.parse(xhrVideo.responseText);
+		console.log(videoInformation);
 		$('#title').html(videoInformation.snippet.title);
 		$('#description').html(videoInformation.snippet.description);
 	} else {
