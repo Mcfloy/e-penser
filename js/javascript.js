@@ -17,8 +17,8 @@ if (uploads !== undefined) {
 	if (xhrVideo.readyState == 4 && xhrVideo.status == 200) {
 		var videoInformation = JSON.parse(xhrVideo.responseText);
 		console.log(videoInformation);
-		$('#title').html(videoInformation.snippet.title);
-		$('#description').html(videoInformation.snippet.description);
+		$('#title').html(videoInformation.items[0].snippet.title);
+		$('#description').html(videoInformation.items[0].snippet.description);
 	} else {
 		console.log("Error on receiving the lastest video informations !");
 	}
@@ -34,7 +34,7 @@ function onYouTubeIframeAPIReady() {
 	player = new YT.Player('player', {
 		height: '641',
 		width: '1140',
-		videoId: lastVideo.id.videoId,
+		videoId: videoInformation.items[0].id,
 		events: {
 			'onReady': onPlayerReady,
 			'onStateChange': onPlayerStateChange
