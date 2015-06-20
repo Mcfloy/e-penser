@@ -18,7 +18,7 @@ if (uploads !== undefined) {
 		var videoInformation = JSON.parse(xhrVideo.responseText);
 		console.log(videoInformation);
 		$('#title').html(videoInformation.items[0].snippet.title);
-		$('#description').text(videoInformation.items[0].snippet.description);
+		$('#description').html(videoInformation.items[0].snippet.descriptio.replace(/\n/g, "<br/>"));
 	} else {
 		console.log("Error on receiving the lastest video informations !");
 	}
