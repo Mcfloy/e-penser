@@ -33,17 +33,10 @@ function onYouTubeIframeAPIReady() {
 		height: '641',
 		width: '1140',
 		videoId: videoInformation.items[0].id,
-		events: {
-			'onReady': onPlayerReady,
-			'onStateChange': onPlayerStateChange
-		},
 		playerVars: {
 			controls: 2,
 			rel: 0,
 			showinfo: 0
 		}
 	});
-}
-
-function onPlayerReady(event) {
 }
