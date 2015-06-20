@@ -36,10 +36,12 @@ function onYouTubeIframeAPIReady() {
 		events: {
 			'onReady': onPlayerReady,
 			'onStateChange': onPlayerStateChange
+		},
+		playerVars: {
+			controls: 2,
+			rel: 0,
+			showinfo: 0
 		}
-		controls: 2,
-		rel: 0,
-		showinfo: 0
 	});
 }
 
