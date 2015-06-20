@@ -18,7 +18,7 @@ if (uploads !== undefined) {
 		var videoInformation = JSON.parse(xhrVideo.responseText);
 		console.log(videoInformation);
 		$('#title').html(videoInformation.items[0].snippet.title);
-		$('#description').html(videoInformation.items[0].snippet.description.replace(/\n/g, "<br/>"));
+		$('#description').html(videoInformation.items[0].snippet.description.replace(/\n/g, "<br/>").replace(/\b(?:https?|ftp):\/\/[a-z0-9-+&@#\/%?=~_|!:,.;]*[a-z0-9-+&@#\/%=~_|]/gim, '<a href="$&" target="_blank">$&</a>'));
 	} else {
 		console.log("Error on receiving the lastest video informations !");
 	}
