@@ -20,23 +20,28 @@ if (uploads !== undefined) {
 	} else {
 		console.log("Error on receiving the lastest video informations !");
 	}
-}
 
-var tag = document.createElement('script');
-tag.src = "https://www.youtube.com/iframe_api";
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+	var tag = document.createElement('script');
+	tag.src = "https://www.youtube.com/iframe_api";
+	var firstScriptTag = document.getElementsByTagName('script')[0];
+	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-var player;
-function onYouTubeIframeAPIReady() {
-	player = new YT.Player('player', {
-		height: '641',
-		width: '1140',
-		videoId: videoInformation.items[0].id,
-		playerVars: {
-			controls: 2,
-			rel: 0,
-			showinfo: 0
-		}
+	var player;
+	function onYouTubeIframeAPIReady() {
+		player = new YT.Player('player', {
+			height: '641',
+			width: '1140',
+			videoId: videoInformation.items[0].id,
+			playerVars: {
+				controls: 2,
+				rel: 0,
+				showinfo: 0
+			}
+		});
+	}
+
+	$('#carousel').owlCarousel({
+		jsonPath : uploads,
+		ladyLoad : true
 	});
 }
