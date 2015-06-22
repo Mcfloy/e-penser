@@ -41,7 +41,7 @@ if (uploads !== undefined) {
 	}
 
 	for (var item in uploads.items) {
-		$("#carousel").append("<span class='item'>" + uploads.items[item].snippet.thumbnails.medium.url + "</span>");
+		$("#carousel").append("<span class='item'><img class='lazyOwl' data-src='" + uploads.items[item].snippet.thumbnails.medium.url + "'/></span>");
 	}
 	$("#carousel").owlCarousel({
 		items : 5,
