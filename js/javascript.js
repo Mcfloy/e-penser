@@ -46,7 +46,7 @@ if (uploads !== undefined) {
 		console.log(uploads.items[item]);
 		carousel.owl.push({"item": uploads.items[item].snippet.thumbnails.medium.url});
 	}
-	console.log(carousel);
+	console.log(carousel.stringify);
 	$("#carousel").owlCarousel({
 		jsonPath : carousel,
 		lazyLoad : true
