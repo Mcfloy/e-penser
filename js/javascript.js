@@ -43,7 +43,8 @@ if (uploads !== undefined) {
 	console.log(uploads.items);
 	var carousel = { owl : [] };
 	for (var item in uploads.items) {
-		carousel.owl.push({"item": item.snippet.thumbnails.medium.url});
+		console.log(uploads.items[item]);
+		carousel.owl.push({"item": uploads.items[item].snippet.thumbnails.medium.url});
 	}
 	console.log(carousel);
 	$("#carousel").owlCarousel({
