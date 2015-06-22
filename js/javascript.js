@@ -66,7 +66,7 @@ if (uploads !== undefined) {
 }
 	console.log(JSON.stringify(carousel));
 	$("#carousel").owlCarousel({
-		jsonPath : carousel,
+		jsonPath : JSON.stringify(carousel),
 		lazyLoad : true
 	});
 }
