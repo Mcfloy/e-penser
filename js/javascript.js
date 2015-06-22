@@ -46,7 +46,7 @@ if (uploads !== undefined) {
 	$("#carousel").owlCarousel({
 		items : 3,
 		lazyLoad : true,
-		navigation : true,
+		lazyEffect : true,
 		responsive : true
 	});
 }
