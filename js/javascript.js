@@ -44,11 +44,11 @@ if (uploads !== undefined) {
 	var carousel = { "owl" : [] };
 	for (var item in uploads.items) {
 		console.log(uploads.items[item]);
-		carousel.owl.push({"item": uploads.items[item].snippet.thumbnails.medium.url});
+		carousel.owl.push({"item": "<span class='item'>" + uploads.items[item].snippet.thumbnails.medium.url + "</span>"});
 	}
 	console.log(JSON.stringify(carousel));
 	$("#carousel").owlCarousel({
-		jsonPath : "http://owlgraphic.com/owlcarousel/demos/json/data.json",
+		jsonPath : carousel,
 		lazyLoad : true
 	});
 }
