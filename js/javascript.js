@@ -1,5 +1,5 @@
 var xhr = new XMLHttpRequest();
-xhr.open("GET", "https://www.googleapis.com/youtube/v3/search?order=date&part=id&channelId=UCcziTK2NKeWtWQ6kB5tmQ8Q&maxResults=5&key=AIzaSyBCt5jbexNc1YbPTx5odURRdOVoxCbgFcc", false);
+xhr.open("GET", "https://www.googleapis.com/youtube/v3/search?order=date&part=id,snippet&channelId=UCcziTK2NKeWtWQ6kB5tmQ8Q&maxResults=5&key=AIzaSyBCt5jbexNc1YbPTx5odURRdOVoxCbgFcc", false);
 xhr.send();
 
 if (xhr.readyState == 4 && xhr.status == 200) {
@@ -41,9 +41,4 @@ if (uploads !== undefined) {
 	}
 
 	console.log(uploads.items);
-
-	$('#carousel').owlCarousel({
-		jsonPath : uploads.items,
-		ladyLoad : true
-	});
 }
