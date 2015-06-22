@@ -40,8 +40,10 @@ if (uploads !== undefined) {
 		});
 	}
 
+	console.log(uploads.items);
+
 	$('#carousel').owlCarousel({
-		jsonPath : uploads,
+		jsonPath : uploads.items,
 		ladyLoad : true
 	});
 }
