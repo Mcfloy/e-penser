@@ -48,7 +48,7 @@ if (uploads !== undefined) {
 	}
 	console.log(JSON.stringify(carousel));
 	$("#carousel").owlCarousel({
-		jsonPath : carousel,
+		jsonPath : "http://owlgraphic.com/owlcarousel/demos/json/data.json",
 		lazyLoad : true
 	});
 }
