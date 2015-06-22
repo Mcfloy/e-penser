@@ -46,8 +46,8 @@ if (uploads !== undefined) {
 		carousel.owl.push({"item": item.snippet.medium.url});
 	}
 	console.log(carousel);
-	$("#carousel").owlCarousel(
+	$("#carousel").owlCarousel({
 		jsonPath : carousel,
 		lazyLoad : true
-	);
+	});
 }
