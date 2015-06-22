@@ -41,12 +41,12 @@ if (uploads !== undefined) {
 	}
 
 	console.log(uploads.items);
-	var carousel = { owl : [] };
+	var carousel = { "owl" : [] };
 	for (var item in uploads.items) {
 		console.log(uploads.items[item]);
 		carousel.owl.push({"item": uploads.items[item].snippet.thumbnails.medium.url});
 	}
-	console.log(carousel.stringify);
+	console.log(JSON.stringify(carousel));
 	$("#carousel").owlCarousel({
 		jsonPath : carousel,
 		lazyLoad : true
