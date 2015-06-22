@@ -44,7 +44,7 @@ if (uploads !== undefined) {
 		$("#carousel").append("<span class='item'><img class='lazyOwl' data-src='" + uploads.items[item].snippet.thumbnails.medium.url + "'/></span>");
 	}
 	$("#carousel").owlCarousel({
-		items : 5,
+		items : 4,
 		lazyLoad : true,
 		navigation : true
 	});
