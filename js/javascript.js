@@ -41,10 +41,8 @@ if (uploads !== undefined) {
 	}
 
 	for (var item in uploads.items) {
-		$("#carousel").append();
-		carousel.owl.push({"item": "<span class='item'>" + uploads.items[item].snippet.thumbnails.medium.url + "</span>"});
+		$("#carousel").append("<span class='item'>" + uploads.items[item].snippet.thumbnails.medium.url + "</span>");
 	}
-	console.log(JSON.stringify(carousel));
 	$("#carousel").owlCarousel({
 		items : 5,
 		lazyLoad : true,
