@@ -11,11 +11,12 @@ if (xhr.readyState == 4 && xhr.status == 200) {
 if (uploads !== undefined) {
 	var firstItem = uploads.items[0];
 	var xhrVideo = new XMLHttpRequest();
+	console.log(uploads);
 	xhrVideo.open("GET", "http://www.googleapis.com/youtube/v3/videos?part=snippet&id=" + firstItem.id.videoId + "&key=AIzaSyBCt5jbexNc1YbPTx5odURRdOVoxCbgFcc", false);
 	xhrVideo.send();
 	if (xhrVideo.readyState == 4 && xhrVideo.status == 200) {
 		var videoInformation = JSON.parse(xhrVideo.responseText);
-		console.log(videoInformation);
+		console.log(xhrVideo.responseText);
 		$('#title').html(videoInformation.items[0].snippet.title);
 		$('#description').html(videoInformation.items[0].snippet.description.replace(/\n/g, "<br/>").replace(/\b(?:https?|ftp):\/\/[a-z0-9-+&@#\/%?=~_|!:,.;]*[a-z0-9-+&@#\/%=~_|]/gim, '<a href="$&" target="_blank">$&</a>'));
 	} else {
