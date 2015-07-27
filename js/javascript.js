@@ -15,6 +15,7 @@ if (uploads !== undefined) {
 	xhrVideo.send();
 	if (xhrVideo.readyState == 4 && xhrVideo.status == 200) {
 		var videoInformation = JSON.parse(xhrVideo.responseText);
+		console.log(videoInformation.items[0]);
 		$('#title').html(videoInformation.items[0].snippet.title);
 		$('#description').html(videoInformation.items[0].snippet.description.replace(/\n/g, "<br/>").replace(/\b(?:https?|ftp):\/\/[a-z0-9-+&@#\/%?=~_|!:,.;]*[a-z0-9-+&@#\/%=~_|]/gim, '<a href="$&" target="_blank">$&</a>'));
 	} else {
