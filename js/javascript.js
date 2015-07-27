@@ -16,12 +16,11 @@ if (uploads !== undefined) {
 		firstItem = uploads.items[i++];
 	}
 	var xhrVideo = new XMLHttpRequest();
-	console.log(uploads);
+	console.log(firstItem);
 	xhrVideo.open("GET", "https://www.googleapis.com/youtube/v3/videos?part=snippet&id=" + firstItem.id.videoId + "&key=AIzaSyBCt5jbexNc1YbPTx5odURRdOVoxCbgFcc", false);
 	xhrVideo.send();
 	if (xhrVideo.readyState == 4 && xhrVideo.status == 200) {
 		var videoInformation = JSON.parse(xhrVideo.responseText);
-		console.log(xhrVideo.responseText);
 		$('#title').html(videoInformation.items[0].snippet.title);
 		$('#description').html(videoInformation.items[0].snippet.description.replace(/\n/g, "<br/>").replace(/\b(?:https?|ftp):\/\/[a-z0-9-+&@#\/%?=~_|!:,.;]*[a-z0-9-+&@#\/%=~_|]/gim, '<a href="$&" target="_blank">$&</a>'));
 	} else {
