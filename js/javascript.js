@@ -16,7 +16,6 @@ if (uploads !== undefined) {
 		firstItem = uploads.items[i++];
 	}
 	var xhrVideo = new XMLHttpRequest();
-	console.log(firstItem);
 	xhrVideo.open("GET", "https://www.googleapis.com/youtube/v3/videos?part=snippet&id=" + firstItem.id.videoId + "&key=AIzaSyBCt5jbexNc1YbPTx5odURRdOVoxCbgFcc", false);
 	xhrVideo.send();
 	if (xhrVideo.readyState == 4 && xhrVideo.status == 200) {
@@ -47,7 +46,9 @@ if (uploads !== undefined) {
 	}
 
 	for (var item in uploads.items) {
-		$("#carousel").append("<span class='item'><img class='lazyOwl' data-src='" + uploads.items[item].snippet.thumbnails.medium.url + "'/></span>");
+		if (uploads.items[item].id.videoId !== undefined) {
+			$("#carousel").append("<span class='item'><img class='lazyOwl' data-src='" + uploads.items[item].snippet.thumbnails.medium.url + "'/></span>");
+		}
 	}
 	$("#carousel").owlCarousel({
 		items : 3,
