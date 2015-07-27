@@ -1,5 +1,5 @@
 var xhr = new XMLHttpRequest();
-xhr.open("GET", "http://www.googleapis.com/youtube/v3/search?order=date&part=id,snippet&channelId=UCcziTK2NKeWtWQ6kB5tmQ8Q&maxResults=5&key=AIzaSyBCt5jbexNc1YbPTx5odURRdOVoxCbgFcc", false);
+xhr.open("GET", "https://www.googleapis.com/youtube/v3/search?order=date&part=id,snippet&channelId=UCcziTK2NKeWtWQ6kB5tmQ8Q&maxResults=5&key=AIzaSyBCt5jbexNc1YbPTx5odURRdOVoxCbgFcc", false);
 xhr.send();
 
 if (xhr.readyState == 4 && xhr.status == 200) {
@@ -12,7 +12,7 @@ if (uploads !== undefined) {
 	var firstItem = uploads.items[0];
 	var xhrVideo = new XMLHttpRequest();
 	console.log(uploads);
-	xhrVideo.open("GET", "http://www.googleapis.com/youtube/v3/videos?part=snippet&id=" + firstItem.id.videoId + "&key=AIzaSyBCt5jbexNc1YbPTx5odURRdOVoxCbgFcc", false);
+	xhrVideo.open("GET", "https://www.googleapis.com/youtube/v3/videos?part=snippet&id=" + firstItem.id.videoId + "&key=AIzaSyBCt5jbexNc1YbPTx5odURRdOVoxCbgFcc", false);
 	xhrVideo.send();
 	if (xhrVideo.readyState == 4 && xhrVideo.status == 200) {
 		var videoInformation = JSON.parse(xhrVideo.responseText);
