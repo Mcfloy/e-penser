@@ -9,7 +9,12 @@ if (xhr.readyState == 4 && xhr.status == 200) {
 }
 
 if (uploads !== undefined) {
+	var i = 1;
 	var firstItem = uploads.items[0];
+	while (firstItem.id.videoId === undefined)
+	{
+		firstItem = uploads.items[i++];
+	}
 	var xhrVideo = new XMLHttpRequest();
 	console.log(uploads);
 	xhrVideo.open("GET", "https://www.googleapis.com/youtube/v3/videos?part=snippet&id=" + firstItem.id.videoId + "&key=AIzaSyBCt5jbexNc1YbPTx5odURRdOVoxCbgFcc", false);
